@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import axios from 'axios';
 import cors from 'cors';
+import db from './models';
 
 const app = express();
 const port = 5002;
@@ -85,4 +86,8 @@ app.get('/spaces', (req, res) => {
     });
 });
 
-app.listen(port, () => console.log('Listening on port 5002'));
+db.sequelize.sync().then(() => {
+  app.listen(port, () => console.log('Listening on port 5002'));
+}).catch((e:any) => {
+  console.log('Error connecting to db', e);
+});
