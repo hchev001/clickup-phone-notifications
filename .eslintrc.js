@@ -25,5 +25,6 @@ module.exports = {
     'import/extensions': 0,
     'import/no-dynamic-require': 0,
     'import/no-import-module-exports': 0,
+    'no-use-before-define': 1,
   },
 };
